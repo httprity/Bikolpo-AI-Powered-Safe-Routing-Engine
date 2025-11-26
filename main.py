@@ -2,6 +2,8 @@
 FastAPI backend with ML-powered flood risk prediction
 FIXED: Ensures different routes, removes flood zone overlay, adds route reasoning
 """
+from dotenv import load_dotenv
+load_dotenv()
 
 
 from fastapi import FastAPI, HTTPException

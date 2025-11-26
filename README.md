@@ -1,56 +1,13 @@
 Bikolpo — AI-Powered Safe Routing Engine During Urban Floods
-Bikolpo (বিকল্প) is an AI-powered routing engine that helps Dhaka citizens find the safest route during urban floods.
- Instead of choosing the fastest route only, Bikolpo evaluates flood probability on every road segment and reranks routes based on real-time risk.
-Built with a custom ML model, synthetic physics-informed flood data, and an interactive Streamlit UI.
 
-Key Features
-AI Flood-Risk Prediction
-ML model predicts flood probability for each road segment.
+Bikolpo (বিকল্প) is an AI-powered routing engine designed to help commuters in Dhaka find the safest route during urban floods. Traditional routing focuses only on the fastest path, but during monsoon-season flooding, the fastest path can often be the most dangerous. Bikolpo changes this by predicting flood probability on every road segment and intelligently reranking routes based on real-time risk.
 
+The system integrates a custom machine learning model trained on a physics-informed synthetic flood dataset with an interactive Streamlit interface and a FastAPI backend. The result is a complete end-to-end solution that not only visualizes route safety but also explains why a particular route is safer.
 
-Trained on synthetic monsoon-driven hourly flood data.
+How It Works
 
+At the core of Bikolpo is an ML model that predicts the flood probability of road segments. The model is trained on a synthetic monsoon-driven hourly dataset that simulates rainfall, river levels, temperature, humidity, flood persistence, drainage, elevation, landcover and spatial hotspots. These physics-based simulations allow the system to learn realistic flood behavior without depending on limited real-world flood data.
 
-Uses rainfall intensity, river levels, elevation, drainage, landcover, and historic flood patterns.
+When a user enters a starting point and a destination, the backend fetches multiple possible routes from the OpenRouteService API. Each route is broken into individual segments, and the ML model assigns a flood probability to each one. A custom scoring algorithm then ranks the available routes as the safest, balanced, or fastest option. The results are returned to the frontend along with color-coded geometry, estimated risk levels and textual explanations for why a route is recommended.
 
-
-Safe Route Generation
-Retrieves multiple possible routes using OpenRouteService.
-
-
-Reranks them using a flood-aware scoring algorithm:
-
-
-Safest Route
-
-
-Balanced Route
-
-
-Each segment is color-coded based on risk.
-
-
-Interactive Frontend (Streamlit)
-Clean UI with Bengali splash screen (বিকল্প).
-
-
-Shows route cards with flood probability, distance, and ETA.
-
-
-Users can switch between Car/Rickshaw and Walking modes.
-
-
-Highlights “Why this route is the safest” using ML-driven insights.
-
-
-Backend FastAPI Service
-Exposes a /predict endpoint.
-
-
-Geocodes Dhaka locations using a curated dataset.
-
-
-Integrates ML model + routing service + risk scoring.
-
-
-Returns route geometry + per-segment risk.
+The Streamlit frontend displays an interactive map with clear segment-level risk visualization, intuitive route cards, a Bengali splash screen and a simple mode selector for driving or walking. This makes the system not only intelligent, but also easy to use in real-world flood situations.

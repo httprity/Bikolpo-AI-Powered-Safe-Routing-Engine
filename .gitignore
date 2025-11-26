@@ -1,0 +1,44 @@
+
+# ---------------------
+# Python cache
+# ---------------------
+__pycache__/
+*.pyc
+
+# ---------------------
+# Environment variables / secrets
+# ---------------------
+.env
+config.py      # your config contains API keys, do NOT upload
+
+# ---------------------
+# Data folders (both raw + processed)
+# ---------------------
+data/raw/
+data/processed/
+*.csv           # prevents accidental CSV leaks
+
+# ---------------------
+# Model artifacts
+# ---------------------
+model/models/
+*.pkl
+
+# ---------------------
+# Auto-generated plots and images
+# ---------------------
+*.png
+*.jpg
+
+# ---------------------
+# Streamlit cache
+# ---------------------
+.streamlit/
+
+# ---------------------
+# OS / editor files
+# ---------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
